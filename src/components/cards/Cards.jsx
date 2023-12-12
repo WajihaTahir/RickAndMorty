@@ -17,8 +17,8 @@ const cards = ({ results, onButtonPressed, onCharacterSelected }) => {
       return (
         <div
           key={id}
-          className="col-4"
-          style={{ marginLeft: "200px", padding: "30px" }}
+          className="col-3"
+          style={{ padding: "30px" }}
         >
           <div className="flip-card">
             <div className="flip-card-inner">

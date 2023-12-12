@@ -5,6 +5,7 @@ import Cards from "./components/cards/Cards";
 import Pagination from "./components/pagination/Pagination";
 import Search from "./components/search/Search";
 import Modal from './components/Modal/Modal';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   let [pageNumber, setPageNumber] = useState(1); //1 is default page number but you can change it
