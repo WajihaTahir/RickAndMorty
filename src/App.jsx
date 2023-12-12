@@ -4,8 +4,8 @@ import Filters from "./components/filters/Filters";
 import Cards from "./components/cards/Cards";
 import Pagination from "./components/pagination/Pagination";
 import Search from "./components/search/Search";
-import Modal from './components/Modal/Modal';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Modal from "./components/Modal/Modal";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   let [pageNumber, setPageNumber] = useState(1); //1 is default page number but you can change it
@@ -24,21 +24,32 @@ function App() {
 
   return (
     <>
-      <div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          flex: 1,
+          alignItems: "center",
+          height: "100%",
+          width: "100%",
+          justifyContent: 'flex-start'
+        }}
+      >
         <h1>Rick And Morty Challenge</h1>
-        <Search setSearch={setSearch}/>
-        <div
-          className="row"
-          style={{display:"flex"}}
-        >
+        <Search setSearch={setSearch} />
+        <div className="row" style={{ display: "flex" }}>
           <Cards
             onCharacterSelected={setCurrentCharacter}
             onButtonPressed={setIsModalOpen}
             results={results}
           />
         </div>
-        {isModalOpen && <Modal currentCharacter={currentCharacter}/>}
-        <Pagination info={info}pageNumber={pageNumber} setPageNumber={setPageNumber} />
+        {isModalOpen && <Modal currentCharacter={currentCharacter} />}
+        <Pagination
+          info={info}
+          pageNumber={pageNumber}
+          setPageNumber={setPageNumber}
+        />
       </div>
     </>
   );
