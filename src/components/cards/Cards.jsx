@@ -1,8 +1,14 @@
 import React from "react";
 import "./Cards.css";
 
-const cards = ({ results }) => {
+
+const cards = ({ results, onButtonPressed, onCharacterSelected }) => {
   let display;
+
+  function onButtonClick(character){
+    onButtonPressed(true);
+    onCharacterSelected(character);
+  }
 
   if (results) {
     display = results.map((x) => {
@@ -12,16 +18,16 @@ const cards = ({ results }) => {
         <div
           key={id}
           className="col-4"
-          style={{ margin: "10px", padding: "50px" }}
+          style={{ marginLeft: "200px", padding: "30px" }}
         >
-          <h5>{name}</h5>
           <div className="flip-card">
             <div className="flip-card-inner">
               <div className="flip-card-front">
                 <img src={image} alt=""></img>
               </div>
               <div className="flip-card-back">
-                <button>Learn More</button>
+              <h5 style={{textAlign:"center", marginTop:"35px"}}>{name}</h5>
+                <button onClick={()=>{onButtonClick(x)}}>Learn More</button>
               </div>
             </div>
           </div>
@@ -29,7 +35,8 @@ const cards = ({ results }) => {
       );
     });
   } else {
-    display = "No characters found :(";
+    
+    display =  "No characters found :(";
   }
 
   return <>{display}</>;
