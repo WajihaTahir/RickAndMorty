@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import Filters from "./components/filters/Filters";
 import Cards from "./components/cards/Cards";
 import Pagination from "./components/pagination/Pagination";
 import Search from "./components/search/Search";
@@ -13,7 +12,9 @@ function App() {
   let [fetchedData, updateFetchedData] = useState([]);
   let [currentCharacter, setCurrentCharacter] = useState({});
   let [isModalOpen, setIsModalOpen] = useState(false);
+  let [isModalClose] = useState(true);
   let { info, results } = fetchedData;
+
   let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}`;
   useEffect(() => {
     (async function () {
@@ -44,7 +45,11 @@ function App() {
             results={results}
           />
         </div>
-        {isModalOpen && <Modal currentCharacter={currentCharacter} />}
+        {isModalOpen && isModalClose && <Modal currentCharacter={currentCharacter}
+        onbtnclicked={setIsModalOpen}
+
+/>}
+        
         <Pagination
           info={info}
           pageNumber={pageNumber}

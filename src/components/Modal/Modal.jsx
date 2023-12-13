@@ -1,7 +1,17 @@
 import React from "react";
 import "./Modal.css";
+import { hide } from "@popperjs/core";
 
-const Modal = ({ currentCharacter }) => {
+
+
+
+const Modal = ({ currentCharacter, onbtnclicked}) => {
+
+  function onbuttonclicked(currentCharacter)
+  {
+    onbtnclicked(false)
+  }
+
   return (
     <div className="modalcontainer">
       <h4>
@@ -22,16 +32,15 @@ const Modal = ({ currentCharacter }) => {
         style={{ width: "200px", height: "200px" }}
       ></img>
       <br></br>
-      <a href="./App.jsx">
         <button
+          onClick={()=>{onbuttonclicked()}}
           type="button"
           className="btn btn-dark mt-4"
           id="closebutton"
           data-bs-dismiss="modal"
         >
-          Close
+          Close 
         </button>
-      </a>
     </div>
   );
 };

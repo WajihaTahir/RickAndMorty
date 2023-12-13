@@ -23,7 +23,7 @@ const cards = ({ results, onButtonPressed, onCharacterSelected }) => {
           <div className="flip-card">
             <div className="flip-card-inner">
               <div className="flip-card-front">
-                <img src={image} alt=""></img>
+                <img src={image} alt="" style={{border:"solid 3px black"}}></img>
               </div>
               <div className="flip-card-back">
               <h5 style={{textAlign:"center", marginTop:"35px"}}>{name}</h5>

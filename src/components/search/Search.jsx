@@ -8,7 +8,7 @@ const Search = ({ setSearch }) => {
         onChange={(e) => {
           setSearch(e.target.value);
         }}
-        placeholder="Search for characters"
+        placeholder="   Search for characters..."
         type="text"
         className={styles.input}
       />
