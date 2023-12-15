@@ -1,33 +1,41 @@
 import React from "react";
 import "./Cards.css";
 
-
-const cards = ({ results, onButtonPressed, onCharacterSelected }) => {
+const cards = ({ results, onButtonPressed, onCharacterSelected, search }) => {
   let display;
 
-  function onButtonClick(character){
+  function onButtonClick(character) {
     onButtonPressed(true);
     onCharacterSelected(character);
+    
   }
 
   if (results) {
-    display = results.map((x) => {
-      let { id, name, image } = x;
+    display = results.map((search) => {
+      let { id, name, image } = search;
 
       return (
-        <div
-          key={id}
-          className="col-3"
-          style={{ padding: "30px" }}
-        >
+        <div key={id} className="col-3" style={{ padding: "30px" }}>
           <div className="flip-card">
             <div className="flip-card-inner">
               <div className="flip-card-front">
-                <img src={image} alt="" style={{border:"solid 3px black"}}></img>
+                <img
+                  src={image}
+                  alt=""
+                  style={{ border: "solid 2px black" }}
+                ></img>
               </div>
               <div className="flip-card-back">
-              <h5 style={{textAlign:"center", marginTop:"35px"}}>{name}</h5>
-                <button onClick={()=>{onButtonClick(x)}}>Learn More</button>
+                <h5 style={{ textAlign: "center", marginTop: "35px" }}>
+                  {name}
+                </h5>
+                <button
+                  onClick={() => {
+                    onButtonClick(search);
+                  }}
+                >
+                  Learn More
+                </button>
               </div>
             </div>
           </div>
@@ -35,8 +43,7 @@ const cards = ({ results, onButtonPressed, onCharacterSelected }) => {
       );
     });
   } else {
-    
-    display =  "No characters found :(";
+    display = "No characters found :(";
   }
 
   return <>{display}</>;

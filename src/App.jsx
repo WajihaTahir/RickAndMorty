@@ -16,13 +16,27 @@ function App() {
   let { info, results } = fetchedData;
 
   let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}`;
-  useEffect(() => {
-    (async function () {
-      let data = await fetch(api).then((res) => res.json());
+  useEffect(() => {   
+    (async function () {    //name omitted to create an anonymous function. 
+      let response = await fetch(api)
+      const data = await response.json(); 
+      console.log(data);     
       updateFetchedData(data);
     })();
   }, [api]); //put a watch here, so whenever page number changes, it is run again.
 
+//   useEffect(()=>{
+
+//     const fetchData = async () => {
+//       try {
+//           const data = await fetch(`https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}`)
+//           updateFetchedData(data.results)
+//       } catch (error) {
+//           console.error(error)
+//       }
+//   }
+//   fetchData()
+// }, [search,pageNumber])
   return (
     <>
       <div
@@ -33,23 +47,28 @@ function App() {
           alignItems: "center",
           height: "100%",
           width: "100%",
-          justifyContent: 'flex-start'
+          justifyContent: "flex-start",
         }}
       >
         <h1>Rick And Morty Challenge</h1>
-        <Search setSearch={setSearch} />
+        <Search setSearch={setSearch} search={search} setPageNumber={setPageNumber}/>
+        
         <div className="row" style={{ display: "flex" }}>
           <Cards
             onCharacterSelected={setCurrentCharacter}
             onButtonPressed={setIsModalOpen}
             results={results}
+            search={search}
           />
         </div>
-        {isModalOpen && isModalClose && <Modal currentCharacter={currentCharacter}
-        onbtnclicked={setIsModalOpen}
 
-/>}
-        
+        {isModalOpen && isModalClose && (
+          <Modal
+            currentCharacter={currentCharacter}
+            onbtnclicked={setIsModalOpen}
+          />
+        )}
+
         <Pagination
           info={info}
           pageNumber={pageNumber}

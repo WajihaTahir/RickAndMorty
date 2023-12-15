@@ -2,14 +2,9 @@ import React from "react";
 import "./Modal.css";
 import { hide } from "@popperjs/core";
 
-
-
-
-const Modal = ({ currentCharacter, onbtnclicked}) => {
-
-  function onbuttonclicked(currentCharacter)
-  {
-    onbtnclicked(false)
+const Modal = ({ currentCharacter, onbtnclicked }) => {
+  function onbuttonclicked(currentCharacter) {
+    onbtnclicked(false);
   }
 
   return (
@@ -32,15 +27,17 @@ const Modal = ({ currentCharacter, onbtnclicked}) => {
         style={{ width: "200px", height: "200px" }}
       ></img>
       <br></br>
-        <button
-          onClick={()=>{onbuttonclicked()}}
-          type="button"
-          className="btn btn-dark mt-4"
-          id="closebutton"
-          data-bs-dismiss="modal"
-        >
-          Close 
-        </button>
+      <button
+        onClick={() => {
+          onbuttonclicked();
+        }}
+        type="button"
+        className="btn btn-dark mt-4"
+        id="closebutton"
+        data-bs-dismiss="modal"
+      >
+        Close
+      </button>
     </div>
   );
 };

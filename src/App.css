@@ -1,10 +1,10 @@
- #root {
+#root {
   text-align: center;
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex: 1;
-} 
+}
 
 h1 {
   text-align: center;
